@@ -37,6 +37,13 @@ function manageStore(storage = {
             case "setemail":
                 return { ...storage, userinfo : { ...storage["userinfo"], loggedin: true ,email: action.payload}}
 
+            case "setdefault":
+                return { 
+                    datafromDB: {"account-create": NaN, "reason": ""},
+                    userinfo : {
+                        loggedin : false,
+                        email: ""
+                    }}
             default :
                 return storage;
         }

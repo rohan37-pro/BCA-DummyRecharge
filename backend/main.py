@@ -1,5 +1,5 @@
 from flask import Flask, request
-from database import create_account, user_authenticate
+from database import create_account, user_authenticate, get_isp
 import json
 app = Flask(__name__)
 
@@ -23,6 +23,14 @@ def authentication():
         return {"account-create": False, "reason": "GET request is not accepted"}
 
 
+@app.route("/api/get-isp-data/", methods=["GET"])
+def get_isp_data():
+    if request.method == "GET":
+        data = get_isp()
+        _data_ = {}
+        for i in data:
+            _data_[i[0]] = json.loads(i[1])
+        return _data_
 
 
 

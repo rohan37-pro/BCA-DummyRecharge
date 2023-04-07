@@ -33,7 +33,7 @@ const SignUp = () => {
 
                 <div className="form-container">
                     <div className="person-logo"><AccountCircleIcon fontSize="large" /></div>
-                        <TextField onChange={ (event)=> setemail(event.target.value) } className="email-input" type="text" fullWidth variant='standard' label = 'E-mail'  placeholder='Enter Your email' />
+                        <TextField autoComplete="off" onChange={ (event)=> setemail(event.target.value) } className="email-input" type="text" fullWidth variant='standard' label = 'E-mail'  placeholder='Enter Your email' />
                         <TextField  onChange={ (event)=> setpassword(event.target.value) } className="email-input" type="password" fullWidth variant='standard' label = 'Password'  placeholder='Enter password' />
 
                         <div className="error-massage-container">

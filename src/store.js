@@ -11,6 +11,11 @@ export const storage = createStore(manageStore)
 //         loggedin : false,
 //         email: ""
 //     }
+//      recharge : {
+//          phone : 0,
+//          isp : "Jio",
+//          plan : 0
+//      }
 // }
 
 
@@ -27,6 +32,11 @@ function manageStore(storage = {
     userinfo : {
         loggedin : false,
         email: ""
+    },
+    recharge : {
+        phone : 0,
+        isp : "Jio",
+        plan : 0
     }
 } , action){
 
@@ -35,6 +45,7 @@ function manageStore(storage = {
                 return { ...storage, datafromDB : action.payload}
             
             case "setemail":
+                console.log("setemail activated")
                 return { ...storage, userinfo : { ...storage["userinfo"], loggedin: true ,email: action.payload}}
 
             case "setdefault":
@@ -43,7 +54,17 @@ function manageStore(storage = {
                     userinfo : {
                         loggedin : false,
                         email: ""
-                    }}
+                    },
+                    recharge : {
+                        phone : 0,
+                        isp : "Jio",
+                        plan : 0
+                    }
+                }
+            case "addrecharge" :
+                console.log("case recharge activated")
+                console.log("returning", { ...storage, recharge : { phone : action.payload.phone, isp: action.payload.isp, plan: action.payload.plan}})
+                return { ...storage, recharge : { phone : action.payload.phone, isp: action.payload.isp, plan: action.payload.plan}}
             default :
                 return storage;
         }

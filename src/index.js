@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Login from './login'
 import SignUp from './signup'
+import Payment from "./payment"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
@@ -16,6 +17,7 @@ root.render(
                 <Route exact path={"/"} element={<App/>} ></Route>
                 <Route exact path={"/login"} element={<Login />} ></Route>
                 <Route exact path={"/signup"} element={<SignUp />} ></Route>
+                <Route exact path={"/payment"} element={<Payment />} ></Route>
             </Routes>
         </BrowserRouter>
   </React.StrictMode>

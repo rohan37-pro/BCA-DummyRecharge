@@ -50,6 +50,7 @@ function App() {
 		if (errormessage === "proceed"){
 			navigate("/payment")
 		}
+                
     });
   return (
     <div className="App">

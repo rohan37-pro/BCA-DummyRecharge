@@ -68,7 +68,7 @@ function App() {
 		<div className='recharge-container'>
 			<div className='phone-input'>
 				<label className='form-lebel'> Phone Number</label>
-				<input onChange={(event)=>{setphone(event.target.value); seterrormessage("")}} className='form-input'></input>
+				<input onChange={(event)=>{setphone(event.target.value); seterrormessage("")}} className='form-input' required></input>
       		</div>
 			  {/* <img src='/static/images/jio.png' /> */}
 			<div className='isp-selection-box-div'>
@@ -95,7 +95,7 @@ function App() {
 
 			<div>{[1].map(()=> errormessage!=="" ? (<p className='errormessagehome'>{errormessage}</p>):(<></>))}</div>
 
-			<div><button onClick={()=>seterrormessage(proceedtopay(phone, isp, selectedPlan))} className='pay-button'>Proceed to Pay</button></div>
+			<div><button onClick={()=>seterrormessage(proceedtopay(phone, isp, selectedPlan))} type='submit' className='pay-button'>Proceed to Pay</button></div>
 
 			<div className='logout-button-container'><button className='logout-button' onClick={()=> { navigate("/login"); storage.dispatch({type:"setdefault"});}}> Logout </button></div>
 		</div>

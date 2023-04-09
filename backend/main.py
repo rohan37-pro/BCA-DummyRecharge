@@ -1,5 +1,5 @@
 from flask import Flask, request
-from database import create_account, user_authenticate, get_isp
+from database import create_account, user_authenticate, get_isp, store_recharge, get_recharge_table
 import json
 app = Flask(__name__)
 
@@ -33,6 +33,27 @@ def get_isp_data():
         return _data_
 
 
+@app.route("/api/rechargedetails/", methods=["post"])
+def api_store_recharge():
+    if request.method == "POST":
+        data = json.loads(request.get_data())
+        supp_nigga = store_recharge(data)
+        if supp_nigga == True:
+            return {'date store': "successful", "status": "ok", "status_code": 200}
+        else:
+            return {'date store': "failed", "status": "error", "status_code": 500}
+
+    else :
+        return {"status": "forbidden", "status_code": 403, "reason": "only post is allowed"}
+
+
+@app.route("/api/get-recharge-details/", methods=["GET"])
+def api_get_recharge_details():
+    if request.method == "GET":
+        data  = get_recharge_table()
+        return data
+    else :
+        return {"status": "forbidden", "status_code": 403, "reason": "only post is allowed"} 
 
 
 if __name__== "__main__":

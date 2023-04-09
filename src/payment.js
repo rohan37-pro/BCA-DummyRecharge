@@ -11,7 +11,7 @@ const Payment = () =>{
     const [cardNumber, setcardNumber] = useState("")
     const [expiryDate, setexpiryDate] = useState("")
     const [cvv, setcvv] = useState("")
-    console.log(errormessage)
+
 
     useEffect( () => {
         function checkcardNumber(){
@@ -65,7 +65,6 @@ function paymentvalidation(name, cardNumber, expiryDate, cvv) {
     const arr  = expiryDate.split("/")
     const month = Number(arr[0])
     const year = Number(arr[1])
-    console.log("don't know", month, year)
 
     if (name === ""){
         return "Please enter your name"
@@ -77,11 +76,19 @@ function paymentvalidation(name, cardNumber, expiryDate, cvv) {
         return "card expired or wrong format (eg. 01/2025) "
     }
     else if (cvv === "" || cvv.length !== 3 || isNaN(Number(cvv))){
-        console.log(cvv==="", cvv.length!==3, isNaN(cvv))
-        
         return "Invalid cvv"
     }
     else{
+        let api = "/api/rechargedetails/"
+        let storedata = storage.getState()
+        let email = storedata.userinfo.email
+        let recharge = storedata.recharge
+        const requestOptions = {
+            method: 'POST',
+            headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify({  "email": email, "recharge": recharge })
+        };
+        fetch(api, requestOptions).then((response)=>response.json()).then((data)=>console.log(data))
         return "successful"
     }
 }

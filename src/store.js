@@ -16,6 +16,13 @@ export const storage = createStore(manageStore)
 //          isp : "Jio",
 //          plan : 0
 //      }
+//      rechargeDetails : {1 : {
+//            'email': 'jio@'
+//            'phone' : 1243
+//            'isp': 'jio'
+//            'plan' : 1234
+//             datetime : '234'
+//       }}
 // }
 
 
@@ -37,7 +44,8 @@ function manageStore(storage = {
         phone : 0,
         isp : "Jio",
         plan : 0
-    }
+    },
+    rechargeDetails : {}
 } , action){
 
         switch (action.type){
@@ -65,6 +73,9 @@ function manageStore(storage = {
                 console.log("case recharge activated")
                 console.log("returning", { ...storage, recharge : { phone : action.payload.phone, isp: action.payload.isp, plan: action.payload.plan}})
                 return { ...storage, recharge : { phone : action.payload.phone, isp: action.payload.isp, plan: action.payload.plan}}
+            case "addRechargeDetails":
+                return { ...storage, rechargeDetails : action.payload }
+
             default :
                 return storage;
         }

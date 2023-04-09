@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import Login from './login'
 import SignUp from './signup'
 import Payment from "./payment"
+import Admin from './admin'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
@@ -18,6 +19,7 @@ root.render(
                 <Route exact path={"/login"} element={<Login />} ></Route>
                 <Route exact path={"/signup"} element={<SignUp />} ></Route>
                 <Route exact path={"/payment"} element={<Payment />} ></Route>
+                <Route exact path={"/admin"} element={<Admin />} ></Route>
             </Routes>
         </BrowserRouter>
   </React.StrictMode>

@@ -17,7 +17,6 @@ function App() {
 	const [ispfetched, setispfetched] = useState(0)
 	const [radiochecked, setradiochecked] = useState(0)
 	const [errormessage, seterrormessage] = useState("")
-	console.log(selectedPlan)
 
 
     useEffect( ()=> {

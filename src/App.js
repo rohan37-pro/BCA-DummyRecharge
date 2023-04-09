@@ -17,6 +17,8 @@ function App() {
 	const [ispfetched, setispfetched] = useState(0)
 	const [radiochecked, setradiochecked] = useState(0)
 	const [errormessage, seterrormessage] = useState("")
+	console.log(selectedPlan)
+
 
     useEffect( ()=> {
 		function get_isp_data(){
@@ -50,6 +52,13 @@ function App() {
 		if (errormessage === "proceed"){
 			navigate("/payment")
 		}
+		
+		if (selectedPlan<0){
+			setselectedPlan(0);
+			document.getElementById("recharge").value = "";
+		}
+		
+		
     });
   return (
     <div className="App">

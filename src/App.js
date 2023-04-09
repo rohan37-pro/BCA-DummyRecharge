@@ -57,8 +57,7 @@ function App() {
 			setselectedPlan(0);
 			document.getElementById("recharge").value = "";
 		}
-		
-		
+
     });
   return (
     <div className="App">
